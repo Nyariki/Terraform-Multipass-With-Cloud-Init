@@ -4,8 +4,6 @@
  * CRUD operations for Multipass virtual machines
  */
 
-// No need to "grab" java.util.logging: it's part of the JDK!
-
 static main( args ) {
     if( args ) {
         "${args.head()}"( *args.tail() )
