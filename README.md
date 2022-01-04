@@ -5,4 +5,4 @@ Demo Terraform config for quickly spinning up Multipass VMs. It builds on the wo
 2. [Groovy](https://groovy-lang.org/install.html). 
 3. [Multipass](https://multipass.run/). 
 
-ToDo: Use Terraform to spin up a K8S cluster entirely on this config.
+Checkout an updated config with `cloud-init` [here](https://github.com/Nyariki/Terraform-Multipass-With-Cloud-Init.git)
