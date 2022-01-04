@@ -1,13 +1,11 @@
 terraform {
   required_providers {
     shell = {
-      source = "scottwinkler/shell"
+      source  = "scottwinkler/shell"
       version = "1.7.10"
     }
   }
 }
-
-provider "shell" {}
 
 variable "name" {
   type        = string
@@ -32,11 +30,18 @@ variable "disk" {
   description = "Storage in VM"
 }
 
+module "config" {
+  source = "./config"
+  name   = var.name
+}
 
 resource "shell_script" "vm" {
-    lifecycle_commands {
-        create = "groovy ${path.module}/scripts/operations.groovy createVm ${var.name} ${var.mem} ${var.cpus} ${var.disk}"
-        read   = "groovy ${path.module}/scripts/operations.groovy getVm ${var.name}"
-        delete = "groovy ${path.module}/scripts/operations.groovy deleteVm ${var.name}"
-    }
+  lifecycle_commands {
+    create = "groovy ${path.module}/scripts/operations.groovy createVm ${var.name} ${var.mem} ${var.cpus} ${var.disk} ${module.config.cloud_init}"
+    read   = "groovy ${path.module}/scripts/operations.groovy getVm ${var.name}"
+    delete = "groovy ${path.module}/scripts/operations.groovy deleteVm ${var.name}"
+  }
 }
+
+
+

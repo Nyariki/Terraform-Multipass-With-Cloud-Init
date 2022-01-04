@@ -1,0 +1,28 @@
+users:
+  - name: ubuntu
+    sudo: [ 'ALL=(ALL) NOPASSWD:ALL' ]
+    groups: users, admin, sudo
+    home: /home/ubuntu
+    shell: /bin/bash
+    lock_passwd: false
+    ssh-authorized-keys:
+      - ${ssh_public_key}
+ssh_pwauth: false
+disable_root: false
+chpasswd:
+  list: |
+    ubuntu:${password}
+  expire: False
+
+package_update: true
+packages:
+  - qemu-guest-agent
+
+# every boot
+bootcmd:
+  - [ sh, -c, 'echo booted...; echo $(date) | sudo tee -a /root/bootcmd.log' ]
+# run once for setup
+runcmd:
+  - [ sh, -c, 'echo setup...; $(date) | sudo tee -a /root/runcmd.log' ]
+# written to /var/log/cloud-init-output.log
+final_message: "The system is now up, after $UPTIME seconds"
