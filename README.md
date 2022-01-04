@@ -23,7 +23,12 @@ The [multipass](/multipass/main.tf) module manages the VM, allowing the name, me
 The `vm` resource wraps up calls to a [script](multipass/scripts/operations.groovy) that creates, reads and deletes the vm, according to the resource lifecycle.
 
 ## Testing
-A vm created can be accessed via SSH on the console, for example: 
+Apply the configuration: 
+```console
+terraform init
+terraform apply -auto-approve 
+```
+Access a VM:
 ```console
 ssh -i multipass/key/keys/id_rsa_test-vm-0 -oStrictHostKeyChecking=no ubuntu@192.168.64.19 
 ```

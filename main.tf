@@ -2,7 +2,7 @@
 
 # list of hosts to be created
 locals {
-  vms = 1
+  vms = 3
 }
 
 module "multipass_vms" {
