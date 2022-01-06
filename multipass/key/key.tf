@@ -29,7 +29,7 @@ resource "shell_script" "ssh_key" {
 output "key" {
   value      = shell_script.ssh_key.output
   depends_on = [
-    shell_script.ssh_keys
+    shell_script.ssh_key
   ]
 
 }
