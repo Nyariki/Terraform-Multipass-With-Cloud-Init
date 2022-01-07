@@ -13,11 +13,6 @@ chpasswd:
   list: |
     ubuntu:${password}
   expire: False
-
-package_update: true
-packages:
-  - qemu-guest-agent
-
 # every boot
 bootcmd:
   - [ sh, -c, 'echo booted...; echo $(date) | sudo tee -a /root/bootcmd.log' ]
