@@ -33,4 +33,4 @@ Access a VM:
 ssh -i multipass/key/keys/id_rsa_test-vm-0 -oStrictHostKeyChecking=no ubuntu@192.168.64.19 
 ```
 
-Checkout an updated config with `cloud-init` [here](https://github.com/Nyariki/Terraform-Multipass-With-Cloud-Init.git)
+ToDo: Use Terraform to spin up a microk8s cluster entirely on this config.
